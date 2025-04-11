@@ -27,11 +27,6 @@ const Header = () => {
              <a href="#" className="text-sm font-medium text-gray-900 border-b-2 border-black pb-1">Overview</a>
              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Integrations</a>
              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Activity</a>
-             <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Domains</a>
-             <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Usage</a>
-             <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Monitoring</a>
-             <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Observability</a>
-             <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Storage</a>
              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Flags</a>
              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">AI</a>
              <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-900">Support</a>
