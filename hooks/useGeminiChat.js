@@ -36,6 +36,7 @@ export const useGeminiChat = (initialMessages = []) => {
     try {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro-exp-03-25:generateContent?key=${apiKey}`; // Using Gemini 2.5 Pro
 
+
       const requestBody = {
         contents: apiFormattedMessages, // Send the entire conversation history
       };
