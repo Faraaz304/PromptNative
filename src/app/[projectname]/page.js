@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown'; // Keep the import
 import { useGeminiChat } from '../../../hooks/useGeminiChat';
 
-// --- SVG Icon Components (Keep these as they are) ---
 const ChevronDownIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -30,11 +29,9 @@ const ChevronDownIcon = () => (
       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
     </svg>
    );
-// ... (rest of your SVG components)
 
-export default function HomePage() {
+export default function ProjectChat() {
    const { messages, isLoading, error, sendMessage } = useGeminiChat([
-     // Initial messages if any
    ]);
   const [inputValue, setInputValue] = useState('');
   const chatContainerRef = useRef(null); // Ref for scrolling
@@ -91,7 +88,7 @@ export default function HomePage() {
           {isLoading && (
              <div className="flex justify-start">
                  <div className="max-w-xl">
-                     <p className="text-sm text-gray-500 italic animate-pulse">Grok is thinking...</p>
+                     <p className="text-sm text-gray-500 italic animate-pulse">thinking...</p>
                  </div>
              </div>
           )}
@@ -134,13 +131,13 @@ export default function HomePage() {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="How can Grok help?"
+              placeholder="Type your message..."
               className="flex-1 bg-transparent outline-none placeholder-gray-400 text-sm px-2 py-1 disabled:bg-gray-100"
               disabled={isLoading} // Disable input while loading
             />
 
             <button type="button" className="bg-gray-100 border border-gray-300 rounded-full px-3 py-1.5 text-sm flex items-center space-x-1 text-gray-700 hover:bg-gray-200">
-                <span>Grok 3</span>
+                <span>PromptNative</span>
                 <ChevronDownIcon />
             </button>
             <button
