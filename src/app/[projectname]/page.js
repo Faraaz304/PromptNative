@@ -33,20 +33,14 @@ const ArrowUpIcon = () => (
 
 
 
-const InfoIcon = () => (/* ... SVG ... */ <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-500"><path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.386-.514a.375.375 0 1 1 .528.397l-.868.651a.375.375 0 1 0 .528.397l.868-.651M11.25 11.25v-1.5m0 1.5c-.592 0-1.056.464-1.056 1.056v.016c0 .592.464 1.056 1.056 1.056m1.056-2.112v-1.5m0 1.5c.592 0 1.056.464 1.056 1.056v.016c0 .592-.464 1.056-1.056 1.056M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a1.05 1.05 0 0 0 1.05-1.05v-.016c0-.592-.478-1.05-1.05-1.05S10.95 18.34 10.95 18.934v.016A1.05 1.05 0 0 0 12 21Z" /></svg>);
-// --- End Placeholder Components ---
-
 
 export default function HomePage() {
-  // Use the custom hook
    const { messages, isLoading, error, sendMessage } = useGeminiChat([
-     // Optional: Add an initial message from the bot
-     // { role: 'model', content: "Hey there! What's on your mind today?" }
+     
    ]);
   const [inputValue, setInputValue] = useState('');
   const chatContainerRef = useRef(null); // Ref for scrolling
 
-  // Scroll to bottom when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
