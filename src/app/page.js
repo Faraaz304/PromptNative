@@ -1,103 +1,84 @@
-import Image from "next/image";
+import Head from 'next/head';
+import Header from '../../components/Header';
+import ProjectCard from '../../components/ProjectCard';
+// Import necessary icons from local file
+import { Search, ChevronDown, Grid, List, Add } from '../../components/Icons';
+
+// Sample Data (same as before)
+const projectsData = [
+  { id: 1, iconType: 'outline', name: 'placement-management-system-backe...', url: 'placement-management-system-backe...', repo: 'Faraaz304/Placement-Management-System', commitMessage: 'created uploading function', lastUpdate: 'Jan 25', branch: 'main' },
+  { id: 2, iconType: 'filled', name: 'placement-management-system', url: 'placement-management-system-wine.v...', repo: 'Faraaz304/Placement-Management-System', commitMessage: 'change forntened', lastUpdate: 'Jan 25', branch: 'main' },
+  { id: 3, iconType: 'dotted', name: 'echo-api', url: 'echo-api-six.vercel.app', repo: 'Faraaz304/Echo', commitMessage: 'spelling change', lastUpdate: 'Jan 9', branch: 'main' },
+  { id: 4, iconType: 'filled', name: 'echo-voice-assistant', url: 'echo-voice-assistant.vercel.app', repo: 'Faraaz304/Echo', commitMessage: 'spelling change', lastUpdate: 'Jan 9', branch: 'main' },
+  { id: 5, iconType: 'dotted', name: 'neutron-ai-backend', url: 'neutron-ai-backend.vercel.app', repo: 'Faraaz304/Neutron-AI', commitMessage: 'added a lot of cloudinary models to make the website real ...', lastUpdate: 'Jan 4', branch: 'main' },
+  { id: 6, iconType: 'filled', name: 'neutron-ai', url: 'neutron-ai-tau.vercel.app', repo: 'Faraaz304/Neutron-AI', commitMessage: 'added a lot of cloudinary models to make the website real ...', lastUpdate: 'Jan 4', branch: 'main' },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <Head>
+        <title>Overview – Faraaz's Projects – Vercel</title>
+        <meta name="description" content="Vercel UI Clone Overview" />
+        {/* Add a favicon if you have one */}
+        {/* <link rel="icon" href="/favicon.ico" />  */}
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <Header />
+
+      <main className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Search and Controls Bar */}
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
+          {/* Search Input */}
+          <div className="relative flex-grow sm:flex-grow-0 sm:w-72 md:w-96">
+             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="text-gray-400" /> {/* Use local icon */}
+            </div>
+            <input
+              type="text"
+              placeholder="Search Repositories and Projects..."
+              className="block w-full pl-10 pr-12 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                 ⌘ K
+                </kbd>
+            </div>
+          </div>
+
+          {/* Sorting and View Controls */}
+          <div className="flex items-center space-x-2">
+            {/* Sort Dropdown */}
+             <button className="flex items-center space-x-1 px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+               <span>Sort by activity</span>
+               <ChevronDown /> {/* Use local icon */}
+             </button>
+
+             {/* View Toggle */}
+             <div className="flex items-center border border-gray-300 rounded-md">
+                <button className="p-2 bg-gray-100 text-gray-700 rounded-l-md border-r border-gray-300">
+                    <Grid /> {/* Use local icon */}
+                </button>
+                <button className="p-2 text-gray-500 hover:bg-gray-50 hover:text-gray-700 rounded-r-md">
+                    <List /> {/* Use local icon */}
+                </button>
+             </div>
+
+             {/* Add New Button */}
+             <button className="flex items-center space-x-1 px-4 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+               <span>Add New...</span>
+               <ChevronDown /> {/* Use local icon */}
+             </button>
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projectsData.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
